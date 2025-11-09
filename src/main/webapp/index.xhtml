@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>TP4 Web - RAG</title>
+</h:head>
+<h:body>
+    <f:view>
+        <h:messages errorStyle="color: red" showDetail="true" showSummary="false" globalOnly="true"/>
+        <h:form id="form">
+            <h:outputLabel value="Choisissez le PDF : "/>
+            <h:selectOneMenu value="#{bb.choixPdf}">
+                <f:selectItems value="#{bb.pdfOptions}"/>
+            </h:selectOneMenu>
+
+            <h:commandButton value="Nouveau chat" action="#{bb.nouveauChat}" />
+
+            <h:panelGrid columns="2" columnClasses="topAligned,topAligned">
+                <h:panelGrid columns="1">
+                    <h:panelGroup>
+                        <h:outputText value="Question :"/>
+                    </h:panelGroup>
+                    <h:inputTextarea value="#{bb.question}" title="Question"
+                                     cols="50" rows="5"/>
+                    <h:commandButton value="Envoyer la question" action="#{bb.envoyer}"/>
+                    <h:outputText value="Réponse :"/>
+                    <h:inputTextarea value="#{bb.reponse}" title="Réponse"
+                                     cols="50" rows="15"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="vertical-align: top;">
+                    <h:outputText value="Conversation :"/>
+                    <h:inputTextarea rows="30" cols="50" readonly="true"
+                                     value="#{bb.conversation}" title="Conversation entière"/>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
